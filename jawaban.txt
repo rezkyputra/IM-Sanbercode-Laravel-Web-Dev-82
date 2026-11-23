@@ -1,0 +1,29 @@
+1. Buat database
+create database perpus82;
+
+2. Create Table
+categories
+CREATE TABLE categories( id integer PRIMARY KEY AUTO_INCREMENT, name varchar(255) );
+
+books
+CREATE TABLE books( id integer PRIMARY KEY AUTO_INCREMENT, title varchar(255), summary text, stock integer, category_id integer, FOREIGN KEY (category_id) REFERENCES categories(id) );
+
+3. Insert Data
+categories
+INSERT INTO categories (name) VALUES ("novel"), ("teknologi"), ("manga");
+
+books
+INSERT INTO books (title, summary, stock, category_id) VALUES("belajar javascript pemula", "lorem ipsum 123", 30, 2);
+INSERT INTO books (title, summary, stock, category_id) VALUES("One Piece Vol 30", "lorem ipsum 123", 40, 3);
+INSERT INTO books (title, summary, stock, category_id) VALUES("Naruto Vol 30", "lorem ipsum 123", 35, 3);
+
+4. Select Data
+4a. SELECT id, title, summary, stock from books;
+4b 
+- SELECT * from books WHERE stock > 30;
+- SELECT * FROM books WHERE title LIKE "%piece%";
+4c
+SELECT books.*, categories.name AS category FROM books INNER JOIN categories ON books.category_id = categories.id;
+
+5. Update Data
+UPDATE books SET stock = 50 WHERE id = 3;
